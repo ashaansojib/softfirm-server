@@ -7,6 +7,7 @@ const port = process.env.PORT || 9988;
 
 // load config & vers
 dotenv.config({path: './config/config.env'});
+const ConnectDB = require("./config/db");
 
 // load routes here
 const users = require("./routes/Users");
@@ -17,8 +18,10 @@ app.use(cors());
 
 // routes call here
 app.use("/api/users", users);
+app.use("/api/users/:id", users);
 
 // db connect here
+ConnectDB();
 
 // error defaine after routes
 
