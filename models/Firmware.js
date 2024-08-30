@@ -33,7 +33,7 @@ const FirmwareSchema = new mongoose.Schema({
     type: String,
   },
   createAt: {
-    type: new Date(),
+    type: Date,
   },
   filename: {
     type: String,
