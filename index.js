@@ -4,10 +4,12 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const colors = require("colors");
 const port = process.env.PORT || 9988;
+const path = require("path")
 
 // load config & vers
 dotenv.config({ path: "./config/config.env" });
 const ConnectDB = require("./config/db");
+const errorHandler = require("./middleware/error");
 
 // load routes here
 const users = require("./routes/Users");
@@ -27,7 +29,7 @@ app.use("/api/firmwares/:id", firmwares);
 ConnectDB();
 
 // error defaine after routes
-
+app.use(errorHandler);
 // default route
 app.get("/", (req, res) => {
   res.send("The server is running.");
