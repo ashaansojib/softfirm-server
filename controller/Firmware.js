@@ -15,6 +15,6 @@ exports.addFirmware = asyncHandler(async (req, res, next) => {
 // remove a firmware
 exports.removeFirmware = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
-  const query = await FirmwareSchema.deleteOne({id});
+  const query = await FirmwareSchema.deleteOne({ _id: id });
   res.status(200).json({ success: true, data: query });
 });

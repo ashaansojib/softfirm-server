@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 const FirmwareSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, "Please add title"],
+    unique: true,
   },
   brand: {
     type: String,
@@ -14,11 +16,15 @@ const FirmwareSchema = new mongoose.Schema({
   },
   chipset: {
     type: String,
-    required: [true, "Please add chipset"],
   },
   size: {
     type: String,
-    required: [true, "Please add file size"],
+  },
+  desc: {
+    type: String,
+  },
+  version: {
+    type: String,
   },
   status: {
     type: String,
@@ -32,12 +38,21 @@ const FirmwareSchema = new mongoose.Schema({
   category: {
     type: String,
   },
-  createAt: {
+  image: {
+    type: String,
+  },
+  createdAt: {
     type: Date,
+    default: Date.now,
   },
   filename: {
     type: String,
   },
+});
+// make url
+FirmwareSchema.pre("save", function (next) {
+  this.filename = slugify(this.title, { lower: true });
+  next();
 });
 module.exports = mongoose.model("Firmware-Schema", FirmwareSchema);
 // title, brand, name, chipset, size, price, status, link, category, date, filename
