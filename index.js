@@ -16,8 +16,8 @@ const users = require("./routes/Users");
 const firmwares = require("./routes/Firmware");
 
 // app middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 // routes call here
 app.use("/api/users", users);
