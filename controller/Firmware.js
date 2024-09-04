@@ -10,6 +10,7 @@ exports.getFirmware = asyncHandler(async (req, res, next) => {
   const limit = parseInt(req.query.limit, 10) || 10; // set a default limit
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
+  // const total = await FirmwareSchema.countDocuments()
 
   let query = brand 
     ? FirmwareSchema.find({ brand }) 
@@ -46,7 +47,7 @@ exports.getFirmware = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({ 
     success: true, 
-    count: firmware.length, 
+    count: total, 
     pagination, 
     data: firmware 
   });
