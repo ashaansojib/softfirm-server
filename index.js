@@ -4,7 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const colors = require("colors");
 const port = process.env.PORT || 9988;
-const path = require("path")
+const path = require("path");
 
 // load config & vers
 dotenv.config({ path: "./config/config.env" });
@@ -14,6 +14,7 @@ const errorHandler = require("./middleware/error");
 // load routes here
 const users = require("./routes/Users");
 const firmwares = require("./routes/Firmware");
+const comments = require("./routes/Comments");
 
 // app middleware
 app.use(cors());
@@ -24,6 +25,8 @@ app.use("/api/users", users);
 app.use("/api/users/:id", users);
 app.use("/api/firmwares", firmwares);
 app.use("/api/firmwares/:id", firmwares);
+app.use("/api/comments", comments);
+app.use("/api/comments/:id", comments);
 
 // db connect here
 ConnectDB();
