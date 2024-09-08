@@ -10,7 +10,7 @@ const PostCommentSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  _id: {
+  postId : {
     type: String,
   },
 });

@@ -1,9 +1,14 @@
 const asyncHandeler = require("../middleware/async");
 const PostCommentSchema = require("../models/Comments");
-// get comments by single post
+// all comments get
+exports.allComments = asyncHandeler(async (req, res, next) => {
+  const result = await PostCommentSchema.find();
+  res.status(200).json({ success: true, data: result });
+});
+// get comments by sing
 exports.commentsById = asyncHandeler(async (req, res, next) => {
   const id = req.params.id;
-  const comments = await PostCommentSchema.find({ _id: id });
+  const comments = await PostCommentSchema.find({ postId: id });
   res.status(200).json({ success: true, data: comments });
 });
 // add a comments
