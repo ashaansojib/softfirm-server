@@ -15,6 +15,7 @@ const errorHandler = require("./middleware/error");
 const users = require("./routes/Users");
 const firmwares = require("./routes/Firmware");
 const comments = require("./routes/Comments");
+const sharedLinks = require("./routes/SharedLinks");
 
 // app middleware
 app.use(cors());
@@ -23,10 +24,15 @@ app.use(express.json());
 // routes call here
 app.use("/api/users", users);
 app.use("/api/users/:id", users);
+// main products
 app.use("/api/firmwares", firmwares);
 app.use("/api/firmwares/:id", firmwares);
+// comments api
 app.use("/api/comments", comments);
 app.use("/api/comments/:id", comments);
+// shared link api
+app.use("/api/links", sharedLinks);
+app.use("/api/links/:id", sharedLinks);
 
 // db connect here
 ConnectDB();
