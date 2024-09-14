@@ -16,6 +16,7 @@ const users = require("./routes/Users");
 const firmwares = require("./routes/Firmware");
 const comments = require("./routes/Comments");
 const sharedLinks = require("./routes/SharedLinks");
+const moneyManage = require("./routes/MoneyManage");
 
 // app middleware
 app.use(cors());
@@ -33,6 +34,10 @@ app.use("/api/comments/:id", comments);
 // shared link api
 app.use("/api/links", sharedLinks);
 app.use("/api/links/:id", sharedLinks);
+
+// money manage account
+app.use("/api/money-manage", moneyManage);
+app.use("/api/money-manage/:id", moneyManage);
 
 // db connect here
 ConnectDB();

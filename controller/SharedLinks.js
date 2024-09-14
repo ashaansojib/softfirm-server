@@ -8,7 +8,7 @@ exports.allSharedLinks = asyncHandler(async (req, res, next) => {
 });
 // search by category
 exports.getLinksByCat = asyncHandler(async (req, res, next) => {
-  const { cat } = req.query;
+  const cat = req.params.cat;
   const result = await LinksSchema.find({ category: cat });
   res.status(200).json({ success: true, data: result });
 });

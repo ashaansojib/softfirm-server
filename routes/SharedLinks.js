@@ -8,7 +8,7 @@ const {
 const router = express.Router();
 
 router.route("/").get(allSharedLinks);
-router.route("/cat").get(getLinksByCat);
+router.route("/:cat").get(getLinksByCat);
 router.route("/").post(addLinks);
 router.route("/:id").delete(removeLinks);
 
