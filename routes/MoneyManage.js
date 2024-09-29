@@ -4,7 +4,7 @@ const {
   allMoneyItems,
   moneyItemByCat,
   removeMoneyItem,
-  addMoneyItem,
+  addMoneyItem
 } = require("../controller/MoneyManage");
 
 router.route("/").get(allMoneyItems);

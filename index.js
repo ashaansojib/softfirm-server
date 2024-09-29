@@ -17,6 +17,7 @@ const firmwares = require("./routes/Firmware");
 const comments = require("./routes/Comments");
 const sharedLinks = require("./routes/SharedLinks");
 const moneyManage = require("./routes/MoneyManage");
+const moneyCounter = require("./routes/MoneyCounter");
 
 // app middleware
 app.use(cors());
@@ -39,6 +40,9 @@ app.use("/api/links/:id", sharedLinks);
 app.use("/api/money-manage", moneyManage);
 app.use("/api/money-manage/:id", moneyManage);
 
+// money Counter
+app.use("/api/money-counter", moneyCounter);
+app.use("/api/money-counter/:id", moneyCounter);
 // db connect here
 ConnectDB();
 

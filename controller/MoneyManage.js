@@ -8,8 +8,8 @@ exports.allMoneyItems = asyncHandler(async (req, res, next) => {
 });
 // get items by category
 exports.moneyItemByCat = asyncHandler(async (req, res, next) => {
-  const id = req.params.id;
-  const query = await MoneyManage.find({ category: id });
+  const cat = req.params.cat;
+  const query = await MoneyManage.find({ cat: cat });
   res.status(200).json({ success: true, data: query });
 });
 // add single item

@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
-const moneyManageSchema = new mongoose.Schema({
+const moenyCounterSchema = new mongoose.Schema({
   amount: {
     type: Number,
     required: true,
   },
-  info: {
+  cat: {
     type: String,
   },
-  cat: {
+  info: {
     type: String,
   },
   createdAt: {
@@ -16,4 +16,4 @@ const moneyManageSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-module.exports = mongoose.model("moneyManage", moneyManageSchema);
+module.exports = mongoose.model("moneyCounter", moenyCounterSchema);
